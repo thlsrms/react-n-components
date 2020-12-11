@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 class AddBook extends React.Component {
   constructor(props) {
@@ -24,15 +24,18 @@ class AddBook extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onAdd.bind(this)}>
-        <input type="text" value={this.state.title} placeholder="Titulo del nuevo libro"
-          onChange={this.handleNewBookTitle.bind(this)} required
-        />
-        <input type="text" value={this.state.author} placeholder="Autor del nuevo libro"
-          onChange={this.handleNewBookAuthor.bind(this)}
-        />
-        <button onClick={this.onAdd.bind(this)}>Añadir</button>
-      </form>
+      <Fragment>
+        <form onSubmit={this.onAdd.bind(this)}>
+          <input type="text" value={this.state.title} placeholder="Titulo del nuevo libro"
+            onChange={this.handleNewBookTitle.bind(this)} required
+          />
+          <input type="text" value={this.state.author} placeholder="Autor del nuevo libro"
+            onChange={this.handleNewBookAuthor.bind(this)}
+          />
+          <button onClick={this.onAdd.bind(this)}>Añadir</button>
+        </form>
+        <hr/>
+      </Fragment>
     )
   }
 }

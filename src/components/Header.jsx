@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 class Header extends React.Component {
   render() {
     return (
-      <div style={style}>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.description}</h2>
-      </div>
+      <Fragment>
+        <div style={style}>
+          <h1>{this.props.title}</h1>
+          <h2>{this.props.description}</h2>
+        </div>
+        <hr />
+      </Fragment>
     );
   }
 }
