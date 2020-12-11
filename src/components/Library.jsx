@@ -48,7 +48,7 @@ class Library extends React.Component {
       <div style={styles.center}>
         <AddBook callBack={this.onAdd.bind(this)} />
 
-        {this.props.books.length > 0
+        {this.state.books.length > 0
           ? <p>Hay {this.state.books.length} libros disponibles</p>
           : <p>No hay libros disponibles</p>
         }
