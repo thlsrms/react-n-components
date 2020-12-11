@@ -1,15 +1,15 @@
 import React from 'react';
-import AddBook from './libraryComponents/AddBook';
 
+import AddBook from './libraryComponents/AddBook';
 import Book from './libraryComponents/Book';
 import BookSearch from './libraryComponents/BookSearch';
+import ClearLibrary from './libraryComponents/ClearLibrary';
 import Recommendations from './libraryComponents/Recommendations';
 
 class Library extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      addTitle: '',
       books: [],
     }
     this.onAdd = this.onAdd.bind(this);
@@ -43,6 +43,10 @@ class Library extends React.Component {
     alert(`Libro recomendado: ${this.state.books[recomendation].props.title}`);
   }
 
+  clearLibrary() {
+    this.setState({ books: [] });
+  }
+
   render() {
     return (
       <div style={styles.center}>
@@ -62,8 +66,8 @@ class Library extends React.Component {
         />
 
         <BookSearch callBack={this.onSearch.bind(this)} />
-        
-        <button onClick={() => this.setState({ books: [] })}>Limpiar biblioteca</button>
+
+        <ClearLibrary callBack={this.clearLibrary.bind(this)} />
       </div>
     );
   }
