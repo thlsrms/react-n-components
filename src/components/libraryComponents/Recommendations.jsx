@@ -12,7 +12,7 @@ class Recommendations extends React.Component {
 
   render() {
     return (
-      <button onClick={this.recommendBook.bind(this)}>Recibir recomendación de libro</button>
+      <button style={this.props.style} onClick={this.recommendBook.bind(this)}>Recibir recomendación de libro</button>
     );
   }
 }
