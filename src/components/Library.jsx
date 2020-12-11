@@ -57,11 +57,12 @@ class Library extends React.Component {
           {this.state.books}
         </ul>
 
-        <Recommendations booksAmout={this.state.books.length}
-          callBack={this.receiveRecommendation.bind(this)}
+        <Recommendations booksAmout={this.state.books.length} callBack={this.receiveRecommendation.bind(this)}
           style={styles.verticalSpacing}
         />
+
         <BookSearch callBack={this.onSearch.bind(this)} />
+        
         <button onClick={() => this.setState({ books: [] })}>Limpiar biblioteca</button>
       </div>
     );
