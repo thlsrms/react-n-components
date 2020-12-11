@@ -11,13 +11,17 @@ class Book extends React.Component {
 
   render() {
       return (
-          <div>
+          <div style={style}>
               <h2>{this.props.title}</h2>
               <h4>{this.props.author}</h4>
               <p>{this.getDescription()}</p>
           </div>
       );
   }
+}
+
+const style = {
+    border: "2px dotted gray"
 }
 
 export default Book;
