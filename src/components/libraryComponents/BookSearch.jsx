@@ -17,7 +17,7 @@ class BookSearch extends React.Component {
 
   onSearch(e) {
     e.preventDefault();
-    this.props.callBack(this.state.searchValue, this.showResults.bind(this));
+    if (this.state.searchValue) this.props.callBack(this.state.searchValue, this.showResults.bind(this));
     this.setState({ searchValue: '' });
   }
 
