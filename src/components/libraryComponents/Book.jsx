@@ -28,7 +28,7 @@ const style = {
     button: {
         position: 'relative',
         float: 'right',
-        bottom: '120px',
+        bottom: '80px',
         right: '20px'
     }
 }
