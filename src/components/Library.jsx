@@ -12,7 +12,6 @@ class Library extends React.Component {
     this.state = {
       books: [],
     }
-    this.onAdd = this.onAdd.bind(this);
   }
 
   componentDidMount() {
