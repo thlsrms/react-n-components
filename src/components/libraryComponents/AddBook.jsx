@@ -29,7 +29,7 @@ class AddBook extends React.Component {
           <input type="text"  placeholder="Autor del nuevo libro" name="author"
             value={this.state.author} onChange={this.handleFormInput.bind(this)}
           />
-          <button onClick={this.onAdd.bind(this)}>Añadir</button>
+          <button>Añadir</button>
         </form>
         <hr/>
       </Fragment>
