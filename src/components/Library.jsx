@@ -50,22 +50,17 @@ class Library extends React.Component {
     return (
       <div style={styles.center}>
         <AddBook callBack={this.onAdd.bind(this)} />
-
         {this.state.books.length > 0
           ? <p>Hay {this.state.books.length} libros disponibles</p>
           : <p>No hay libros disponibles</p>
         }
 
-        <ul>
-          {this.state.books}
-        </ul>
+        <ul>{this.state.books}</ul>
 
-        <Recommendations booksAmout={this.state.books.length} callBack={this.receiveRecommendation.bind(this)}
-          style={styles.verticalSpacing}
+        <Recommendations booksAmout={this.state.books.length}
+          callBack={this.receiveRecommendation.bind(this)} style={styles.verticalSpacing}
         />
-
         <BookSearch callBack={this.onSearch.bind(this)} />
-
         <ClearLibrary callBack={this.clearLibrary.bind(this)} />
       </div>
     );
