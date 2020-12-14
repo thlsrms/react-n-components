@@ -23,12 +23,7 @@ class Library extends React.Component {
   }
 
   onAdd(newTitle, newAuthor) {
-    let searchArr = this.state.books.filter(book => {
-      if (book.props.title.toLowerCase().includes(newTitle.toLowerCase())) {
-        return <Book key={book.props.title} title={book.props.title} />
-      }
-    });
-    if (searchArr.length > 0) { // Book already exists
+    if (this.searchBook(newTitle).length > 0) { // Book already exists
       alert(`${newTitle} ya existe en la biblioteca`);
       return;
     }
@@ -40,12 +35,16 @@ class Library extends React.Component {
   }
 
   onSearch(search, callBackFn) {
+    callBackFn(this.searchBook(search));
+  }
+
+  searchBook(titleSearch) {
     let searchArr = this.state.books.filter(book => {
-      if (book.props.title.toLowerCase().includes(search.toLowerCase())) {
+      if (book.props.title.toLowerCase().includes(titleSearch.toLowerCase())) {
         return <Book key={book.props.title} title={book.props.title} />
       }
     });
-    callBackFn(searchArr)
+    return searchArr;
   }
 
   receiveRecommendation(recomendation) {
