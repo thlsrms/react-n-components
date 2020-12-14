@@ -1,7 +1,5 @@
 import React from 'react';
 
-import Book from './Book';
-
 class BookSearch extends React.Component {
   constructor(props) {
     super(props)
@@ -17,7 +15,7 @@ class BookSearch extends React.Component {
 
   onSearch(e) {
     e.preventDefault();
-    if (this.state.searchValue) this.props.callBack(this.state.searchValue, this.showResults.bind(this));
+    if (this.state.searchValue) this.props.callBack(this.state.searchValue, e.target[1].value, this.showResults.bind(this));
     this.setState({ searchValue: '' });
   }
 
@@ -29,8 +27,14 @@ class BookSearch extends React.Component {
     return (
       <div>
         <form onSubmit={this.onSearch.bind(this)}>
-          <input type="text" value={this.state.searchValue} placeholder="Titulo" onChange={(e) => this.onSearchChange(e)} required/>
-          <button>Buscar Libro</button>
+          <input type="text" value={this.state.searchValue} placeholder="Titulo"
+            onChange={(e) => this.onSearchChange(e)} required
+          />
+          <select name="searchType">
+            <option value="title">Title</option>
+            <option value="author">Autor</option>
+          </select>
+          <button style={{marginLeft: "15px"}}>Buscar Libro</button>
         </form>
         {this.state.searchResult
           ? <ul>{this.state.searchResult}</ul>

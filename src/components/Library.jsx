@@ -23,7 +23,7 @@ class Library extends React.Component {
   }
 
   onAdd(newTitle, newAuthor) {
-    let checkForExistingBook = this.searchBook(newTitle).find((book) => {
+    let checkForExistingBook = this.state.books.find((book) => {
       if (book.props.title.toLowerCase() === newTitle.toLowerCase()) return book;
     })
 
@@ -33,21 +33,17 @@ class Library extends React.Component {
     }
 
     this.setState({
-      books: this.state.books.concat(<Book key={newTitle} title={newTitle} author={newAuthor} />)
+      books: [<Book key={newTitle} title={newTitle} author={newAuthor} />, ...this.state.books]
     })
   }
 
-  onSearch(search, callBackFn) {
-    callBackFn(this.searchBook(search));
-  }
-
-  searchBook(titleSearch) {
+  onSearch(search, searchType, callBackFn) {
     let searchArr = this.state.books.filter(book => {
-      if (book.props.title.toLowerCase().includes(titleSearch.toLowerCase())) {
+      if (book.props[searchType].toLowerCase().includes(search.toLowerCase())) {
         return <Book key={book.props.title} title={book.props.title} />
       }
     });
-    return searchArr;
+    callBackFn(searchArr);
   }
 
   receiveRecommendation(recomendation) {
