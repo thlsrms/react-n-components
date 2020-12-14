@@ -9,11 +9,8 @@ class AddBook extends React.Component {
     }
   }
 
-  handleNewBookTitle(e) {
-    this.setState({ title: e.target.value })
-  }
-  handleNewBookAuthor(e) {
-    this.setState({ author: e.target.value })
+  handleFormInput(e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
   onAdd(e) {
@@ -26,11 +23,11 @@ class AddBook extends React.Component {
     return (
       <Fragment>
         <form onSubmit={this.onAdd.bind(this)}>
-          <input type="text" value={this.state.title} placeholder="Titulo del nuevo libro"
-            onChange={this.handleNewBookTitle.bind(this)} required
+          <input type="text"  placeholder="Titulo del nuevo libro" name="title"
+            value={this.state.title} onChange={this.handleFormInput.bind(this)} required
           />
-          <input type="text" value={this.state.author} placeholder="Autor del nuevo libro"
-            onChange={this.handleNewBookAuthor.bind(this)}
+          <input type="text"  placeholder="Autor del nuevo libro" name="author"
+            value={this.state.author} onChange={this.handleFormInput.bind(this)}
           />
           <button onClick={this.onAdd.bind(this)}>Añadir</button>
         </form>
