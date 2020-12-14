@@ -27,11 +27,11 @@ class BookSearch extends React.Component {
     return (
       <div>
         <form onSubmit={this.onSearch.bind(this)}>
-          <input type="text" value={this.state.searchValue} placeholder="Titulo"
+          <input type="text" value={this.state.searchValue} placeholder="Buscar"
             onChange={(e) => this.onSearchChange(e)} required
           />
           <select name="searchType">
-            <option value="title">Title</option>
+            <option value="title">Titulo</option>
             <option value="author">Autor</option>
           </select>
           <button style={{marginLeft: "15px"}}>Buscar Libro</button>
