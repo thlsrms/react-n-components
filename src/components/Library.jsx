@@ -23,14 +23,17 @@ class Library extends React.Component {
   }
 
   onAdd(newTitle, newAuthor) {
-    if (this.searchBook(newTitle).length > 0) { // Book already exists
+    let checkForExistingBook = this.searchBook(newTitle).find((book) => {
+      if (book.props.title.toLowerCase() === newTitle.toLowerCase()) return book;
+    })
+
+    if (checkForExistingBook) { // Book already exists
       alert(`${newTitle} ya existe en la biblioteca`);
       return;
     }
 
-    this.state.books.push(<Book key={newTitle} title={newTitle} author={newAuthor} />);
     this.setState({
-      books: this.state.books
+      books: this.state.books.concat(<Book key={newTitle} title={newTitle} author={newAuthor} />)
     })
   }
 
