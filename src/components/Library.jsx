@@ -17,7 +17,7 @@ class Library extends React.Component {
   componentDidMount() {
     this.setState({
       books: this.props.books.map((book) => {
-        return <Book key={book.title} title={book.title} author={book.author} />;
+        return <Book key={book.title} title={book.title} author={book.author} callBack={this.deleteBook.bind(this)} />;
       })
     })
   }
@@ -33,7 +33,7 @@ class Library extends React.Component {
     }
 
     this.setState({
-      books: [<Book key={newTitle} title={newTitle} author={newAuthor} />, ...this.state.books]
+      books: [<Book key={newTitle} title={newTitle} author={newAuthor} callBack={this.deleteBook.bind(this)} />, ...this.state.books]
     })
   }
 
@@ -52,6 +52,12 @@ class Library extends React.Component {
 
   clearLibrary() {
     this.setState({ books: [] });
+  }
+
+  deleteBook(obj) {
+    this.setState({
+      books: this.state.books.filter(book => book.props.title !== obj.props.title)
+    })
   }
 
   render() {
